@@ -41,9 +41,9 @@ jobs:
           CI: false
           PUBLIC_URL: /
           REACT_APP_API_URL: https://church-pushed-mere-annually.trycloudflare.com/api
-          REACT_APP_WHATSAPP_NUMBER: 212600000000
-          REACT_APP_PHONE_NUMBER: +212600000000
-          REACT_APP_EMAIL: contact@techsolutions-casa.ma
+          REACT_APP_WHATSAPP_NUMBER: 212722618635
+          REACT_APP_PHONE_NUMBER: +212 722-618635
+          REACT_APP_EMAIL: abdellaherraoui3@gmail.com
       
       - name: Setup Pages
         uses: actions/configure-pages@v4

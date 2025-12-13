@@ -52,9 +52,9 @@ services:
       dockerfile: Dockerfile
       args:
         REACT_APP_API_URL: http://localhost:5001/api
-        REACT_APP_WHATSAPP_NUMBER: 212600000000
-        REACT_APP_PHONE_NUMBER: +212600000000
-        REACT_APP_EMAIL: contact@techsolutions-casa.ma
+        REACT_APP_WHATSAPP_NUMBER: 212722618635
+        REACT_APP_PHONE_NUMBER: +212 722-618635
+        REACT_APP_EMAIL: abdellaherraoui3@gmail.com
     container_name: chabakapro_frontend
     restart: unless-stopped
     ports:
