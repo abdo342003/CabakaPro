@@ -1,15 +1,27 @@
 import axios from 'axios';
 
-// Determine base URL: relative for production (nginx proxy), absolute for dev
+// Determine base URL based on environment
 const getBaseURL = () => {
-  // If explicitly set (GitHub Pages production), use that
+  // Check if running on production domain (GitHub Pages)
+  const isProduction = typeof window !== 'undefined' && 
+    (window.location.hostname === 'www.chabakapro.com' || 
+     window.location.hostname === 'chabakapro.com');
+  
+  // Production: Use Cloudflare Tunnel
+  if (isProduction) {
+    return 'https://church-pushed-mere-annually.trycloudflare.com/api';
+  }
+  
+  // If explicitly set via env var, use that
   if (process.env.REACT_APP_API_URL) {
     return process.env.REACT_APP_API_URL;
   }
-  // In Docker (production build with nginx), use relative URL for proxy
+  
+  // Docker with nginx proxy
   if (process.env.NODE_ENV === 'production') {
     return '/api';
   }
+  
   // Local development fallback
   return 'http://localhost:5001/api';
 };
