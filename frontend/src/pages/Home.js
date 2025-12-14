@@ -19,12 +19,10 @@ import SEO from '../components/common/SEO';
 import HeroSlider from '../components/common/HeroSlider';
 import WhatsAppButton from '../components/common/WhatsAppButton';
 import { getPortfolioStats } from '../services/apiService';
-import { logButtonClick } from '../utils/analytics';
 import { useLanguage } from '../context/LanguageContext';
 
 const Home = () => {
   const [stats, setStats] = useState(null);
-  const [loading, setLoading] = useState(true);
   const { t } = useLanguage();
 
   useEffect(() => {
@@ -34,8 +32,6 @@ const Home = () => {
         setStats(statsData.data || null);
       } catch (error) {
         console.error('Erreur chargement données:', error);
-      } finally {
-        setLoading(false);
       }
     };
 

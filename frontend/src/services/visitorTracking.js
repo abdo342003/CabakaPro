@@ -130,7 +130,7 @@ export const initTracking = () => {
   });
 };
 
-export default {
+const visitorTrackingService = {
   trackPageVisit,
   startHeartbeat,
   stopHeartbeat,
@@ -139,3 +139,5 @@ export default {
   getVisitorDetails,
   initTracking
 };
+
+export default visitorTrackingService;

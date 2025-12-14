@@ -16,7 +16,6 @@ import {
   FiUsers,
   FiDollarSign,
   FiClock,
-  FiAward,
   FiSave,
   FiArrowLeft,
   FiLayers,

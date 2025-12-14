@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaServer, FaNetworkWired, FaCloud, FaVideo, FaCheckCircle, FaArrowRight, FaShieldAlt, FaClock, FaHeadset } from 'react-icons/fa';
 import SEO from '../components/common/SEO';
+import Logo from '../components/common/Logo';
 import { useLanguage } from '../context/LanguageContext';
 
 const ServicesEntreprises = () => {
@@ -113,6 +114,9 @@ const ServicesEntreprises = () => {
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
+            <div className="flex justify-center mb-6">
+              <Logo className="h-16" />
+            </div>
             <h1 className="text-5xl md:text-6xl font-heading font-bold mb-6">
               {t('services.businessSolutions')}
             </h1>
@@ -191,34 +195,6 @@ const ServicesEntreprises = () => {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="section bg-gradient-to-r from-gray-900 via-blue-900 to-gray-900 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6">
-            {t('cta.readyToModernize')}
-          </h2>
-          <p className="text-xl mb-8 max-w-3xl mx-auto text-cyan-300">
-            {t('cta.contactForQuote')}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
-              to="/contact"
-              className="btn bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-lg px-10 py-4 shadow-2xl transform hover:scale-105 transition-all inline-flex items-center gap-3"
-            >
-              {t('cta.requestQuote')}
-              <FaArrowRight />
-            </Link>
-            <a 
-              href={`tel:${process.env.REACT_APP_PHONE_NUMBER || '+212600000000'}`}
-              className="btn bg-white/10 backdrop-blur-sm border-2 border-white text-white hover:bg-white hover:text-gray-900 text-lg px-10 py-4 transition-all inline-flex items-center gap-3"
-            >
-              {t('cta.callUs')}
-              <FaArrowRight />
-            </a>
           </div>
         </div>
       </section>

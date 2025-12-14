@@ -29,6 +29,8 @@ const NotFound = lazy(() => import('./pages/NotFound'));
 const Admin = lazy(() => import('./pages/Admin'));
 const AdminBlog = lazy(() => import('./pages/admin/AdminBlog'));
 const AdminPortfolio = lazy(() => import('./pages/admin/AdminPortfolio'));
+const MentionsLegales = lazy(() => import('./pages/MentionsLegales'));
+const Confidentialite = lazy(() => import('./pages/Confidentialite'));
 
 // Page loading component
 const PageLoader = () => (
@@ -78,6 +80,8 @@ function App() {
               <Route path="/admin-dashboard-chabakapro" element={<Admin />} />
               <Route path="/admin/blog" element={<AdminBlog />} />
               <Route path="/admin/portfolio" element={<AdminPortfolio />} />
+              <Route path="/mentions-legales" element={<MentionsLegales />} />
+              <Route path="/confidentialite" element={<Confidentialite />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>

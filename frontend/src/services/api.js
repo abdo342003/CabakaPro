@@ -43,7 +43,6 @@ api.interceptors.request.use(
     return config;
   },
   (error) => {
-    console.error('Request error:', error);
     return Promise.reject(error);
   }
 );
@@ -85,7 +84,6 @@ api.interceptors.response.use(
       }
     }
     
-    console.error('API Error:', { message, error: error.message, url: error.config?.url });
     return Promise.reject({ message, error, status: error.response?.status });
   }
 );

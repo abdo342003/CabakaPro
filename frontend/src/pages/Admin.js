@@ -96,14 +96,12 @@ const Admin = () => {
       // Note: api interceptor already returns response.data
       // So we get { success: true, data: [...], pagination: {...} } directly
       const [blogsRes, portfoliosRes, contactsRes, devisRes, testimonialsRes] = await Promise.all([
-        api.get('/blog', { params: { published: 'all', limit: 1000 } }).catch((err) => { console.log('Blog error:', err); return { data: [] }; }),
-        api.get('/portfolio', { params: { published: 'all', limit: 1000 } }).catch((err) => { console.log('Portfolio error:', err); return { data: [] }; }),
-        api.get('/contact', { params: { limit: 100 } }).catch((err) => { console.log('Contact error:', err); return { data: [] }; }),
-        api.get('/devis', { params: { limit: 100 } }).catch((err) => { console.log('Devis error:', err); return { data: [] }; }),
-        api.get('/testimonials', { params: { published: 'all', limit: 100 } }).catch((err) => { console.log('Testimonials error:', err); return { data: [] }; })
+        api.get('/blog', { params: { published: 'all', limit: 1000 } }).catch(() => ({ data: [] })),
+        api.get('/portfolio', { params: { published: 'all', limit: 1000 } }).catch(() => ({ data: [] })),
+        api.get('/contact', { params: { limit: 100 } }).catch(() => ({ data: [] })),
+        api.get('/devis', { params: { limit: 100 } }).catch(() => ({ data: [] })),
+        api.get('/testimonials', { params: { published: 'all', limit: 100 } }).catch(() => ({ data: [] }))
       ]);
-
-      console.log('API Responses:', { blogsRes, portfoliosRes, contactsRes, devisRes, testimonialsRes });
 
       // Extract data arrays - API response format: { success, data, pagination }
       // The interceptor returns response.data, so we get the object directly
@@ -112,8 +110,6 @@ const Admin = () => {
       const contacts = contactsRes?.data || contactsRes || [];
       const devis = devisRes?.data || devisRes || [];
       const testimonials = testimonialsRes?.data || testimonialsRes || [];
-
-      console.log('Extracted data:', { blogs, portfolios, contacts, devis, testimonials });
 
       setStats({
         blogs: {
@@ -172,11 +168,11 @@ const Admin = () => {
           setVisitors(visitorsRes.data);
         }
       } catch (visitorError) {
-        console.log('Visitor stats not available:', visitorError);
+        // Visitor stats not available - silent fail
       }
 
     } catch (error) {
-      console.error('Error fetching data:', error);
+      // Error fetching data - silent fail
     } finally {
       setLoading(false);
     }
@@ -188,7 +184,7 @@ const Admin = () => {
       await api.patch(`/contact/${id}`, { status });
       fetchAllData();
     } catch (error) {
-      console.error('Error updating contact:', error);
+      // Error updating contact
     }
   };
 
@@ -198,7 +194,7 @@ const Admin = () => {
       await api.patch(`/devis/${id}`, { status });
       fetchAllData();
     } catch (error) {
-      console.error('Error updating devis:', error);
+      // Error updating devis
     }
   };
 
